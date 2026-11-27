@@ -1,0 +1,29 @@
+---
+/**
+ * Client transformations. Renders NOTHING unless src/data/site.ts → transformations
+ * holds entries whose client gave written consent (consent: true) and whose photos
+ * were supplied by Anass. No public images are used here. See README → "Assets to replace".
+ */
+import { transformations } from '../data/site';
+const items = transformations.filter((t) => t.consent === true);
+---
+{items.length > 0 && (
+  <section class="sec sec--paper" id="transformations" aria-labelledby="t-h">
+    <div class="wrap">
+      <p class="eyebrow"><span class="mono">§ Clients</span></p>
+      <h2 id="t-h" class="h2">Accompagnements, avec l’accord des clients</h2>
+      <ul class="tf">
+        {items.map((t) => (
+          <li class="tf__item">
+            <div class="tf__pair">
+              <img src={t.before} alt={`${t.client}, avant`} loading="lazy" width="600" height="750" />
+              <img src={t.after} alt={`${t.client}, après`} loading="lazy" width="600" height="750" />
+            </div>
+            <p class="tf__ctx">{t.client} : {t.context}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="fine">Photos publiées avec l’accord écrit de chaque client. Les résultats dépendent de chaque personne.</p>
+    </div>
+  </section>
+)}

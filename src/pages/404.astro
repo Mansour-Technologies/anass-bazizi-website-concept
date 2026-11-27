@@ -1,0 +1,17 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { withBase } from '../lib/url';
+---
+<Base title="Page introuvable — Anass Bazizi" description="Cette page n’existe pas.">
+  <div class="notice" role="note"><span class="notice__dot" aria-hidden="true"></span>{site.notice}</div>
+  <main id="main" class="sec sec--paper nf">
+    <div class="wrap">
+      <p class="eyebrow"><span class="mono">Erreur 404</span></p>
+      <h1 class="h2">Cette page ne fait pas partie du programme.</h1>
+      <p class="lead">L’adresse demandée n’existe pas.</p>
+      <p style="margin-top:32px"><a class="btn btn--ink" href={withBase('')}>Retour à l’accueil</a></p>
+    </div>
+  </main>
+  <footer class="foot"><div class="wrap foot__row" style="margin-top:0;border:0"><p class="foot__credit"><a href={site.credit.href} target="_blank" rel="noopener noreferrer">{site.credit.label}</a></p></div></footer>
+</Base>

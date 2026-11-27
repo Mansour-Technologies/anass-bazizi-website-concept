@@ -1,0 +1,259 @@
+---
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Poster from '../components/Poster.astro';
+import Transformations from '../components/Transformations.astro';
+import { identity as id, links, audience, heroVideo, programmeVideoId, aboutVideo, kitchenVideo, lessons, site } from '../data/site';
+import { ytImg, ytWatch } from '../lib/url';
+
+const bar = `<svg class="dbar" viewBox="0 0 240 16" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="1" width="5" height="14" rx="1"/><rect x="6" y="4" width="4" height="8" rx="1"/><rect class="dbar__rod" x="10" y="7" width="220" height="2"/><rect x="230" y="4" width="4" height="8" rx="1"/><rect x="235" y="1" width="5" height="14" rx="1"/></svg>`;
+const first = lessons[0];
+const isLatin = (s: string) => /^[\x00-ɏ\s()’'«».,:!?-]+$/.test(s);
+---
+<Base>
+  <Header />
+  <main id="main">
+    <!-- ───────────── HERO ───────────── -->
+    <section class="hero" id="top" aria-labelledby="hero-name">
+      <div class="hero__media">
+        <Poster video={heroVideo} eager ratio="4 / 5" class="poster--hero" label="Ses 30 jours sans Instagram" />
+        <span class="hero__grad" aria-hidden="true"></span>
+      </div>
+      <div class="hero__text">
+        <p class="eyebrow"><span class="mono">{id.role} — {id.city}</span></p>
+        <h1 class="hero__name" id="hero-name">
+          <span class="hero__first">{id.first}</span>
+          <span class="hero__last">{id.last}</span>
+        </h1>
+        <p class="hero__ar" lang="ar" dir="rtl">{id.bioAr}</p>
+        <p class="hero__lede">
+          Prendre du muscle, perdre du gras, comprendre pourquoi : c’est ainsi qu’il présente son coaching
+          <span class="src">(bio Instagram &amp; TikTok)</span>.
+        </p>
+        <div class="hero__cta">
+          <a class="btn btn--ink" href={links.instagramDm} target="_blank" rel="noopener noreferrer">
+            Demander un coaching <span aria-hidden="true">↗</span>
+          </a>
+          <p class="hero__hint">
+            Sur Instagram, écrivez <kbd>COACHING</kbd> en message privé : c’est la consigne de sa bio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── §01 LE COACH ───────────── -->
+    <section class="sec sec--paper" id="coach" aria-labelledby="coach-h">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow"><span class="mono">§01</span> Le coach</p>
+          <Fragment set:html={bar} />
+        </header>
+        <div class="coach">
+          <div class="coach__media">
+            <Poster video={aboutVideo} ratio="16 / 9" label="Ses débuts, racontés par lui" />
+            <p class="coach__story">
+              Il raconte lui-même avoir commencé adolescent, avec peu de moyens pour l’entraînement
+              et la nourriture, et ce qu’il en a appris.
+              <span class="src">Vidéo YouTube, juin 2020</span>
+            </p>
+          </div>
+          <div class="coach__body">
+            <h2 class="h2" id="coach-h">Coach en musculation à Marrakech, il explique la musculation en vidéo depuis 2016.</h2>
+            <p class="lead">
+              Sur Instagram, Anass Bazizi se présente comme
+              <q lang="ar" dir="rtl">{id.bioAr}</q>, un coach spécialisé dans la construction musculaire.
+              Il accompagne deux objectifs qu’il nomme lui-même : <strong>gagner du muscle</strong> et
+              <strong>perdre du gras</strong>. Sur TikTok, il précise la manière :
+              <q lang="ar" dir="rtl">{id.methodAr}</q>, avec des méthodes scientifiques.
+            </p>
+            <dl class="spec">
+              <div><dt class="mono">Accompagne</dt><dd>Prise de muscle · perte de gras</dd></div>
+              <div><dt class="mono">Approche</dt><dd>Expliquée, <span lang="ar" dir="rtl">{id.methodAr}</span></dd></div>
+              <div><dt class="mono">Langues</dt><dd>Darija · français</dd></div>
+              <div><dt class="mono">Basé à</dt><dd>Marrakech</dd></div>
+              <div><dt class="mono">Publie depuis</dt><dd>2016 · YouTube, puis Instagram et TikTok</dd></div>
+              <div class="spec__claim">
+                <dt class="mono">Qualification</dt>
+                <dd>« {id.certified} » <span class="src">auto-déclaré dans sa bio Instagram. Organisme et année à préciser par Anass.</span></dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────────── §02 BAZIC ───────────── -->
+    <section class="sec sec--ink" id="bazic" aria-labelledby="bazic-h">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow"><span class="mono">§02</span> La méthode, dans ses mots</p>
+          <Fragment set:html={bar} />
+        </header>
+        <h2 class="bazic__word" id="bazic-h"><span class="sr">BAZIC : </span><span aria-hidden="true">BAZIC</span></h2>
+        <blockquote class="bazic__quote">
+          <p>«&nbsp;{id.tagline}&nbsp;»</p>
+          <footer><span class="mono">Source</span> Page Facebook « Anass Bazizi Fit »</footer>
+        </blockquote>
+        <p class="bazic__intro">
+          Bazizi, <i>basic</i> : le jeu de mots est le sien. Son contenu revient sans cesse à trois fondamentaux,
+          entraînement, assiette et compréhension, présentés simplement.
+        </p>
+
+        <ol class="pillars">
+          <li class="pillar">
+            <span class="pillar__n mono">01</span>
+            <div class="pillar__txt">
+              <h3>S’entraîner</h3>
+              <p>Il a détaillé, exercice par exercice, le programme de <strong>3 séances par semaine</strong> qui a servi à sa propre prise de masse.</p>
+              <a class="src-link" href={ytWatch(programmeVideoId)} target="_blank" rel="noopener noreferrer">Vidéo YouTube, 2020 <span aria-hidden="true">↗</span></a>
+            </div>
+            <span class="pillar__ar" lang="ar" dir="rtl">التدريب</span>
+          </li>
+          <li class="pillar pillar--media">
+            <span class="pillar__n mono">02</span>
+            <div class="pillar__txt">
+              <h3>Cuisiner</h3>
+              <p>Repas de prise de masse, journée de sèche, aliments bon marché : la cuisine est son format le plus regardé. Sa vidéo la plus vue, des repas de prise de masse, dépasse <strong>778 000 vues</strong>.</p>
+              <a class="src-link" href={ytWatch('Xgbp63wSDrE')} target="_blank" rel="noopener noreferrer">Compteur observé le {audience.observed} <span aria-hidden="true">↗</span></a>
+            </div>
+            <Poster video={kitchenVideo} ratio="16 / 9" class="poster--pillar" label="En cuisine" />
+          </li>
+          <li class="pillar">
+            <span class="pillar__n mono">03</span>
+            <div class="pillar__txt">
+              <h3>Comprendre</h3>
+              <p>Créatine et énergie musculaire, rétention d’eau quand la balance stagne, idées reçues : il explique le pourquoi des choses, pour qu’on ne s’inquiète pas à tort.</p>
+              <a class="src-link" href={links.facebook} target="_blank" rel="noopener noreferrer">Publications Facebook, janvier 2022 <span aria-hidden="true">↗</span></a>
+            </div>
+            <span class="pillar__ar" lang="ar" dir="rtl">الفهم</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ───────────── §03 DÉMARRER ───────────── -->
+    <section class="sec sec--oat" id="demarrer" aria-labelledby="start-h">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow"><span class="mono">§03</span> Démarrer un coaching</p>
+          <Fragment set:html={bar} />
+        </header>
+        <h2 class="h2" id="start-h">Un mot suffit pour commencer.</h2>
+        <div class="start">
+          <div class="start__one">
+            <p class="start__step mono">Étape 1 · vérifiée</p>
+            <div class="dm" aria-hidden="true">
+              <span class="dm__to mono">À : {id.handle}</span>
+              <span class="dm__bubble">COACHING</span>
+            </div>
+            <p>Envoyez <strong>« COACHING »</strong> en message privé sur Instagram. C’est la consigne écrite dans sa bio :</p>
+            <p class="start__ar"><span lang="ar" dir="rtl">{id.ctaAr}</span><span class="src">« {id.ctaFr} »</span></p>
+            <a class="btn btn--ink" href={links.instagramDm} target="_blank" rel="noopener noreferrer">Ouvrir la conversation Instagram <span aria-hidden="true">↗</span></a>
+          </div>
+          <ol class="start__next" start="2">
+            <li>
+              <p class="start__step mono">Étape 2 · à confirmer par Anass</p>
+              <h3>L’échange sur votre objectif</h3>
+              <p>Prise de muscle ou perte de gras : vous en parlez directement avec lui, en darija ou en français.</p>
+            </li>
+            <li>
+              <p class="start__step mono">Étape 3 · à confirmer par Anass</p>
+              <h3>Le cadre de l’accompagnement</h3>
+              <p>Format, suivi et tarif sont précisés par Anass lui-même. Rien n’est fixé sur cette page.</p>
+            </li>
+          </ol>
+        </div>
+        <p class="fine">Structure proposée par Mansour Technologies : les étapes 2 et 3 seront rédigées avec Anass. Ni formulaire ni questionnaire : la conversation se fait directement avec le coach.</p>
+      </div>
+    </section>
+
+    <Transformations />
+
+    <!-- ───────────── §04 VIDÉOS ───────────── -->
+    <section class="sec sec--paper" id="videos" aria-labelledby="vid-h">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow"><span class="mono">§04</span> Apprendre avec lui</p>
+          <Fragment set:html={bar} />
+        </header>
+        <h2 class="h2" id="vid-h">Six vidéos pour comprendre sa façon de coacher.</h2>
+        <p class="lead lead--narrow">Une sélection, pas une bibliothèque : les bases, les erreurs, la cuisine, le budget, la posture et ses débuts.</p>
+        <div class="lib" data-lib>
+          <div class="lib__stage">
+            <Poster video={first} ratio="16 / 9" class="poster--stage poster--chip-right" label="Lire ce chapitre" />
+            <p class="lib__now"><span class="mono" data-lib-chapter>01 · {first.chapter}</span><span data-lib-title>{first.titleFr}</span></p>
+          </div>
+          <ol class="lib__list" role="list">
+            {lessons.map((l, i) => (
+              <li>
+                <button type="button" class="lib__row" aria-pressed={i === 0 ? 'true' : 'false'}
+                  data-id={l.id} data-img={ytImg(l.id, l.frame)} data-pos={l.pos} data-title-ar={l.titleAr}
+                  data-title-fr={l.titleFr} data-chapter={`0${i + 1} · ${l.chapter}`} data-meta={`${l.duration} · ${l.year}`}>
+                  <span class="lib__n mono">0{i + 1}</span>
+                  <span class="lib__txt">
+                    <span class="lib__ch">{l.chapter}</span>
+                    <span class="lib__fr">{l.titleFr}</span>
+                    <span class="lib__ar" lang={isLatin(l.titleAr) ? 'fr' : 'ar'} dir={isLatin(l.titleAr) ? 'ltr' : 'rtl'}>{l.titleAr}</span>
+                  </span>
+                  <span class="lib__meta mono">{l.duration}<br />{l.year}</span>
+                </button>
+              </li>
+            ))}
+          </ol>
+        </div>
+        <p class="fine">Titres originaux en darija, accompagnés d’un résumé en français. Ses publications récentes sont sur
+          <a href={links.instagram} target="_blank" rel="noopener noreferrer">Instagram</a> et
+          <a href={links.tiktok} target="_blank" rel="noopener noreferrer">TikTok</a>.</p>
+      </div>
+    </section>
+
+    <!-- ───────────── §05 CONTACT ───────────── -->
+    <section class="sec sec--ink contact" id="contact" aria-labelledby="contact-h">
+      <div class="wrap">
+        <header class="sec__head">
+          <p class="eyebrow"><span class="mono">§05</span> Contact</p>
+          <Fragment set:html={bar} />
+        </header>
+        <h2 class="contact__h" id="contact-h">Prêt à commencer&nbsp;? <span>Écrivez-lui.</span></h2>
+        <a class="btn btn--amber btn--xl" href={links.instagramDm} target="_blank" rel="noopener noreferrer">
+          <span>Écrire « COACHING » sur Instagram</span><span aria-hidden="true">↗</span>
+        </a>
+        {links.whatsapp && (
+          <a class="btn btn--line" href={links.whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp</a>
+        )}
+        <ul class="channels" role="list">
+          {audience.items.map((c) => (
+            <li>
+              <a href={c.href} target="_blank" rel="noopener noreferrer">
+                <span class="channels__name">{c.label}</span>
+                <span class="channels__handle mono">{c.label === 'TikTok' ? '@anass_bazizi' : c.label === 'Facebook' ? 'Anass Bazizi Fit' : c.label === 'YouTube' ? '@anassbazizi974' : id.handle}</span>
+                <span class="channels__count">{c.value}<small> abonnés</small></span>
+                <span class="channels__arrow" aria-hidden="true">↗</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <p class="fine fine--ink">Audiences observées publiquement le {audience.observed}. Seuls ses comptes officiels sont listés ici.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <div class="wrap foot__in">
+      <p class="foot__sign" lang="ar" dir="rtl">{id.signOffAr}</p>
+      <p class="foot__sign-src mono">Sa formule de fin de vidéo, depuis 2019</p>
+      <div class="foot__row">
+        <p class="foot__name">Anass <b>Bazizi</b> · {id.role} · {id.city}</p>
+        <p class="foot__notice">{site.notice}</p>
+        <p class="foot__credit"><a href={site.credit.href} target="_blank" rel="noopener noreferrer">{site.credit.label}</a></p>
+        <p class="foot__legal">Images : vidéos officielles YouTube d’Anass Bazizi, affichées comme lecteurs de ces vidéos. Aucune photo hébergée sur ce site.</p>
+      </div>
+    </div>
+  </footer>
+  <script>
+    import { initPosters } from '../lib/posters';
+    import { initUi } from '../lib/ui';
+    initPosters();
+    initUi();
+  </script>
+</Base>
