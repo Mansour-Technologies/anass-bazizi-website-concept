@@ -1,0 +1,36 @@
+---
+import { nav, links, site } from '../data/site';
+---
+<div class="notice" role="note"><span class="notice__dot" aria-hidden="true"></span>{site.notice}</div>
+<header class="hdr" data-hdr>
+  <div class="hdr__in">
+    <a class="mark" href="#top" aria-label="Anass Bazizi, haut de page">
+      <svg class="mark__bar" viewBox="0 0 40 16" width="34" height="14" aria-hidden="true"><rect x="0" y="2" width="4" height="12" rx="1"/><rect x="5" y="4" width="3" height="8" rx="1"/><rect x="8" y="7" width="24" height="2"/><rect x="32" y="4" width="3" height="8" rx="1"/><rect x="36" y="2" width="4" height="12" rx="1"/></svg>
+      <span class="mark__name">Anass <b>Bazizi</b></span>
+    </a>
+    <nav class="hdr__nav" aria-label="Sections">
+      <ol>
+        {nav.map((n, i) => <li><a href={`#${n.id}`} data-spy={n.id}><span class="mono">0{i + 1}</span>{n.label}</a></li>)}
+      </ol>
+    </nav>
+    <a class="hdr__cta" href={links.instagramDm} target="_blank" rel="noopener noreferrer">Coaching<span aria-hidden="true">↗</span></a>
+    <button class="hdr__menu" type="button" aria-expanded="false" aria-controls="sommaire" data-menu-open>
+      <span>Sommaire</span><span class="hdr__menu-ico" aria-hidden="true"><i></i><i></i></span>
+    </button>
+  </div>
+  <div class="progress" aria-hidden="true"><span data-progress></span></div>
+</header>
+
+<div class="sheet" id="sommaire" role="dialog" aria-modal="true" aria-label="Sommaire" hidden data-sheet>
+  <div class="sheet__top">
+    <span class="mono">Sommaire</span>
+    <button class="sheet__close" type="button" data-menu-close aria-label="Fermer le sommaire">Fermer <span aria-hidden="true">×</span></button>
+  </div>
+  <ol class="sheet__list">
+    {nav.map((n, i) => <li><a href={`#${n.id}`} data-menu-link><span class="mono">§0{i + 1}</span>{n.label}</a></li>)}
+  </ol>
+  <a class="btn btn--amber sheet__cta" href={links.instagramDm} target="_blank" rel="noopener noreferrer" data-menu-link>
+    Demander un coaching <span aria-hidden="true">↗</span>
+  </a>
+  <p class="sheet__hint">Message Instagram : écrivez « COACHING », comme l’indique sa bio.</p>
+</div>

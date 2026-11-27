@@ -1,0 +1,39 @@
+---
+/**
+ * Official YouTube frame used ONLY as the click-to-play poster of that same video
+ * (youtube-nocookie iframe injected on click). Typographic fallback if the image fails.
+ */
+import type { Video } from '../data/site';
+import { ytImg } from '../lib/url';
+
+interface Props { video: Video; class?: string; eager?: boolean; ratio?: string; label?: string; sizes?: string }
+const { video, class: cls = '', eager = false, ratio = '16 / 9', label = 'Lire la vidéo' } = Astro.props;
+const isLatin = /^[\x00-ɏ\s()’'«».,:!?-]+$/.test(video.titleAr);
+const a11y = `Lire la vidéo officielle : ${video.titleAr}`;
+---
+<figure class:list={['poster', cls, video.chip === 'right' && 'poster--chip-right', video.chip === 'top' && 'poster--chip-top']} data-poster={video.id} data-title={video.titleAr} style={`--ratio:${ratio};--pos:${video.pos ?? '50% 40%'}`}>
+  <div class="poster__frame">
+    <div class="poster__fallback" aria-hidden="true">
+      <span class="mono">Vidéo officielle · YouTube</span>
+      <span class="poster__fallback-title" lang={isLatin ? 'fr' : 'ar'} dir={isLatin ? 'ltr' : 'rtl'}>{video.titleAr}</span>
+    </div>
+    <button class="poster__btn" type="button" aria-label={a11y}>
+      <img
+        class="poster__img"
+        src={ytImg(video.id, video.frame)}
+        alt=""
+        width="1280"
+        height="720"
+        loading={eager ? 'eager' : 'lazy'}
+        fetchpriority={eager ? 'high' : 'auto'}
+        decoding="async"
+        referrerpolicy="no-referrer"
+      />
+      <span class="poster__play">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor" /></svg>
+        <span class="poster__play-text"><b>{label}</b><small>{video.duration} · {video.year}</small></span>
+      </span>
+    </button>
+  </div>
+  <figcaption class="poster__credit">Image : vidéo officielle YouTube — Anass bazizi</figcaption>
+</figure>
