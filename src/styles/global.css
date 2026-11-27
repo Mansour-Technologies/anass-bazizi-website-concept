@@ -328,3 +328,11 @@ q[lang='ar'] { quotes: none; font-weight: 700; color: var(--ink); background: li
 
 /* §01 headline is long: slightly smaller than other h2s */
 .coach .h2 { font-size: clamp(30px, 3.8vw, 50px); }
+
+/* The DM bubble "arrives" when the start panel scrolls in */
+.js .start__one.rv .dm__bubble { opacity: 0; transform: translate(12px, 10px) scale(0.94); transform-origin: 100% 100%; }
+.js .start__one.in .dm__bubble { opacity: 1; transform: none; transition: opacity 0.5s var(--ease) 0.35s, transform 0.7s var(--ease) 0.35s; }
+.js .start__one.rv .dm__bubble::after { transform: scaleX(0); transform-origin: right; }
+.js .start__one.in .dm__bubble::after { transform: scaleX(1); transition: transform 0.6s var(--ease) 0.9s; }
+/* On phones the pressed row already names the chapter: keep only the chapter label under the stage */
+@media (max-width: 899px) { .lib__now [data-lib-title] { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } }
