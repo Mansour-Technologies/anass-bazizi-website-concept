@@ -41,7 +41,7 @@ No photograph is committed to this repository or rehosted. Every image of the co
 
 | Placement | Video | Image used now | Replace on approval with |
 |---|---|---|---|
-| Hero | dnsRyVRvzVg (2020) | `vi/dnsRyVRvzVg/maxres1.jpg` | A recent portrait in a coaching context (vertical + horizontal, ≥2400 px) |
+| Hero | _L3waOqmWcc (2018, in the gym) | `vi/_L3waOqmWcc/maxres2.jpg` | A recent portrait in a coaching context (vertical + horizontal, ≥2400 px) |
 | §01 Le coach | insUKKS_yWc (2020) | `vi/insUKKS_yWc/maxres1.jpg` | A recent environmental portrait (gym, Marrakech) |
 | §02 Cuisiner | m9ICZyGzGCA (2020) | `vi/m9ICZyGzGCA/maxres2.jpg` | A kitchen / meal-prep still |
 | §04 Vidéos (6) | Xg4Xy4zgJFg, oIN98xEjLII, Zxs5C17UPdo, fYJH2PSlDyA, A_pA-3MX-M0, NdcFAeEExy8 | `maxres1/2/3` frames | Keep as video posters, or replace with his chosen thumbnails |

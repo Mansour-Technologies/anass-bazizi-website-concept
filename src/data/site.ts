@@ -67,14 +67,14 @@ export type Video = {
 };
 
 export const heroVideo: Video = {
-  id: 'dnsRyVRvzVg',
-  frame: 'maxres1',
-  titleAr: 'أشياء غريبة وقعت عندما توقفت عن إستعمال انستجرام لمدة 30 يوما',
-  titleFr: 'Ce qui a changé quand il a arrêté Instagram pendant 30 jours',
-  duration: '13 min',
-  year: '2020',
-  pos: '84% 10%',
-};
+  id: '_L3waOqmWcc',
+  frame: 'maxres2',
+  titleAr: 'كيفاش ولى الجسم ديالي من بعد 3 سيمانات قاصحين ديال التدريب و الريجيم',
+  titleFr: 'Trois semaines d’entraînement et de diète : il montre, en salle, ce qui a changé',
+  duration: '15 min',
+  year: '2018',
+  pos: '40% 18%',
+}
 
 /** The programme video, linked as the source of the "S’entraîner" pillar. */
 export const programmeVideoId = 'x1KQ1It13NA';

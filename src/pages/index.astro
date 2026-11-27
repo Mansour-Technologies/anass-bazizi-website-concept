@@ -16,16 +16,18 @@ const isLatin = (s: string) => /^[\x00-ɏ\s()’'«».,:!?-]+$/.test(s);
     <!-- ───────────── HERO ───────────── -->
     <section class="hero" id="top" aria-labelledby="hero-name">
       <div class="hero__media">
-        <Poster video={heroVideo} eager ratio="4 / 5" class="poster--hero" label="Ses 30 jours sans Instagram" />
+        <Poster video={heroVideo} eager ratio="4 / 5" class="poster--hero" label="Trois semaines en salle, par lui" />
         <span class="hero__grad" aria-hidden="true"></span>
       </div>
       <div class="hero__text">
-        <p class="eyebrow"><span class="mono">{id.role} — {id.city}</span></p>
-        <h1 class="hero__name" id="hero-name">
-          <span class="hero__first">{id.first}</span>
-          <span class="hero__last">{id.last}</span>
-        </h1>
-        <p class="hero__ar" lang="ar" dir="rtl">{id.bioAr}</p>
+        <div class="hero__id">
+          <p class="eyebrow"><span class="mono">{id.role} — {id.city}</span></p>
+          <h1 class="hero__name" id="hero-name">
+            <span class="hero__first">{id.first}</span>
+            <span class="hero__last">{id.last}</span>
+          </h1>
+          <p class="hero__ar" lang="ar" dir="rtl">{id.bioAr}</p>
+        </div>
         <p class="hero__lede">
           Prendre du muscle, perdre du gras, comprendre pourquoi : c’est ainsi qu’il présente son coaching
           <span class="src">(bio Instagram &amp; TikTok)</span>.
